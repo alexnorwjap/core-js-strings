@@ -40,8 +40,8 @@ function getStringLength(string) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(string) {
+  return typeof string === 'string' || string instanceof String;
 }
 
 /**
