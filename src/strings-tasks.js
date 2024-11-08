@@ -208,8 +208,8 @@ function sumOfCodes(string) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(string, substring) {
+  return string.startsWith(substring);
 }
 
 /**
@@ -223,8 +223,8 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(string, substring) {
+  return string.endsWith(substring);
 }
 
 /**
