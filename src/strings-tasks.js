@@ -240,8 +240,9 @@ function endsWith(string, substring) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  const getCorrectTime = (element) => String(element).padStart(2, '0');
+  return `${getCorrectTime(minutes)}:${getCorrectTime(seconds)}`;
 }
 
 /**
@@ -254,8 +255,9 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(string) {
+  if (string.length <= 1) return string;
+  return reverseString(string.slice(1)) + string.charAt(0);
 }
 
 /**
@@ -269,8 +271,20 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(string) {
+  if (string.length <= 1) {
+    return string;
+  }
+  const base = string[Math.floor(string.length / 2)];
+  let equal = '';
+  let less = '';
+  let greater = '';
+  for (let i = 0; i <= string.length; i += 1) {
+    if (string[i] === base) equal += string[i];
+    if (string[i] < base) less += string[i];
+    if (string[i] > base) greater += string[i];
+  }
+  return orderAlphabetically(less) + equal + orderAlphabetically(greater);
 }
 
 /**
@@ -285,8 +299,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(string, substring) {
+  return string.includes(substring);
 }
 
 /**
