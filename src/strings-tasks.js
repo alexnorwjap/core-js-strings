@@ -365,14 +365,14 @@ function isPalindrome(string) {
 function findLongestWord(string) {
   let countString = string;
   let longestWord = '';
-  const callBack = (slice, word) => {
-    if (word.length > longestWord.length) {
-      longestWord = word;
+  const callBack = (slice) => {
+    if (slice.trim().length > longestWord.length) {
+      longestWord = slice.trim();
     }
-    countString = countString.slice(slice.length);
+    return '';
   };
-  while (countString.length) {
-    countString.replace(/(^\b\w+\b)\s*/, callBack);
+  while (countString) {
+    countString = countString.replace(/(^\b\w+\b)\s*/, callBack);
   }
   return longestWord;
 }
@@ -387,8 +387,20 @@ function findLongestWord(string) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(string) {
+  let baseString = string;
+  let finalString = '';
+  const callback = (slice, word) => {
+    if (finalString) {
+      finalString += ' ';
+    }
+    finalString += reverseString(word);
+    return '';
+  };
+  while (baseString.length > 0) {
+    baseString = baseString.replace(/(^\b\w+\b)\s*/, callback);
+  }
+  return finalString;
 }
 
 /**
