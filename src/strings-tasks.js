@@ -486,8 +486,8 @@ function unbracketTag(string) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(string) {
+  return string.split(';');
 }
 
 /**
@@ -506,8 +506,11 @@ function extractEmails(/* str */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(string) {
+  return string.replace(/[\w]/g, (letter) => {
+    const base = letter <= 'Z' ? 65 : 97;
+    return String.fromCharCode(((letter.charCodeAt() - base + 13) % 26) + base);
+  });
 }
 
 /**
